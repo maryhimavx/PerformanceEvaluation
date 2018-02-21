@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Client</h1>
+        <h1>HR</h1>
     </body>
 </html>
