@@ -89,7 +89,7 @@
     
     <body>
         <form method="post">
-            <h2 align="center">Add options</h2>
+            <h2 align="center">Add options oop</h2>
             <input type="hidden" name="hid" value="<%=optID%>">
             <table align="center">
                 <tr>
