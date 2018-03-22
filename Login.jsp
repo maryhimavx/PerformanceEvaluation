@@ -6,6 +6,7 @@
 <%@page import="java.sql.ResultSet"%>
 <jsp:useBean class="DB.ConnectionClass" id="obj"></jsp:useBean>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@include file="header.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +14,10 @@
         <title>JSP Page</title>
     </head>
     
-     <%
+    
+     
+    <body>
+         <%
         String type = "", status = "", uid = "";
             if (request.getParameter("btnloginsubmit") != null) 
             {
@@ -91,23 +95,30 @@
     
     
     %>
-     
-    <body>
+    <div class="row" style="margin-top: 135px">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
         <form method="post">
             <h1 align="center">Login</h1>
-        <table align="center">
+            <table align="center" class="table table-hover">
             <tr>
-                <td>User Name</td>
-                <td><input type="text" name="txtusername"></td>
+                
+                <td style="color: #292B2C">User Name</td>
+                <td><input type="text"  class="form-control"  name="txtusername"></td>
             </tr>
             <tr>
-                <td>Password</td>
-                <td><input type="text" name="txtpassword"></td>
+                <td style="color: #292B2C">Password</td>
+                <td><input type="text"  class="form-control"  name="txtpassword"></td>
             </tr>
             <tr>
                 <td colspan="2"><input type="submit" name="btnloginsubmit"></td>
             </tr>
         </table>
+            
         </form>
     </body>
+        </div>
+    </div>
+    
 </html>
+<%@include file="footer.jsp" %>

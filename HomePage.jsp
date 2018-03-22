@@ -28,7 +28,7 @@
                     eid=rs.getString("examid");
                     session.setAttribute("ExamID", eid);
                     out.println(eid);
-                    response.sendRedirect("StartExam.jsp");
+                    response.sendRedirect("Exam.jsp");
                 }
                 
             }

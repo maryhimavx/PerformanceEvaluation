@@ -1,12 +1,15 @@
 <%-- 
-    Document   : ajax_insert
-    Created on : Nov 24, 2017, 2:05:51 PM
+    Document   : ajax_exam
+    Created on : Mar 21, 2018, 3:49:47 PM
     Author     : user
 --%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.sql.ResultSet"%>
 <jsp:useBean class="DB.ConnectionClass" id="obj"></jsp:useBean>
+<!DOCTYPE html>
 <%
-    String qid=request.getParameter("qid");
+  String qid=request.getParameter("qid");
     String opt=request.getParameter("opt");
     System.out.println("ques"+qid);
     System.out.println("opt"+opt);
@@ -29,16 +32,4 @@
     System.out.println(ins);
     obj.executeCommand(ins);
     }
-
 %>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
