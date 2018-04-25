@@ -133,9 +133,9 @@
                 <tr>
                     <td>Employee</td>
                     <td>
-                        <select name="selEmp" >
+                        <select name="selEmp">
 
-                            <option>--Select--</option>
+                            <option hidden="h" value="0">--Select--</option>
 
                             <%
                                 String selq1 = "select * from tbl_emp";
@@ -143,8 +143,9 @@
                                 while (rs2.next()) 
                                 {
                             %>
-                            <option value="<%=rs2.getString("emp_id")%>" <% if (empName.equals(rs2.getString("emp_id"))) 
-                            {%> selected="true" <%}%>>
+                           
+                            <option  value="<%=rs2.getString("emp_id")%>" <% if (empName.equals(rs2.getString("emp_id"))) 
+                            {%> selected<%}%>>
 
 
                                 <%=rs2.getString("emp_name")%></option> 

@@ -19,7 +19,7 @@
         {
             String ename=request.getParameter("selEmp");
             String feedback=request.getParameter("txtfeedback");
-            String ins="insert into tbl_feedback (feedback_details,feedback_date,emp_id,client_id) values('"+feedback+"',curdate(),'"+ename+"','"+session.getAttribute("user_id")+"')";
+            String ins="insert into tbl_feedback (feedback_details,feedback_date,emp_id,hr_id) values('"+feedback+"',curdate(),'"+ename+"','"+session.getAttribute("user_id")+"')";
             boolean b=obj.executeCommand(ins);
             
             

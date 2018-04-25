@@ -95,7 +95,7 @@
                                 {
                             %>
                             <option value="<%=rs1.getString("work_id")%>" <% if (workName.equals(rs1.getString("work_id"))) 
-                            {%> selected="true" <%}%>>
+                            {%> selected<%}%>>
 
 
                                 <%=rs1.getString("work_name")%></option> 

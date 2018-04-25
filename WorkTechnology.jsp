@@ -138,7 +138,7 @@
                             <option>--Select--</option>
 
                             <%
-                                String selq1 = "select * from tbl_clientwork";
+                                String selq1 = "select * from tbl_clientwork where client_id="+session.getAttribute("user_id");
                                 ResultSet rs2 = obj.selectCommand(selq1);
                                 while (rs2.next()) 
                                 {

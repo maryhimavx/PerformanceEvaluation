@@ -6,7 +6,7 @@
 <%@page import="java.sql.ResultSet"%>
 <jsp:useBean class="DB.ConnectionClass" id="obj"></jsp:useBean>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="header.jsp" %>
+<%@include file="guest_header.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -95,30 +95,31 @@
     
     
     %>
-    <div class="row" style="margin-top: 135px">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
+   
+        
         <form method="post">
             <h1 align="center">Login</h1>
-            <table align="center" class="table table-hover">
+            <div>
+            <table align="center">
             <tr>
                 
-                <td style="color: #292B2C">User Name</td>
-                <td><input type="text"  class="form-control"  name="txtusername"></td>
+                <td >User Name</td>
+                <td><input type="text"    name="txtusername"></td>
             </tr>
             <tr>
-                <td style="color: #292B2C">Password</td>
-                <td><input type="text"  class="form-control"  name="txtpassword"></td>
+                <td >Password</td>
+                <td><input type="text"  name="txtpassword"></td>
             </tr>
             <tr>
-                <td colspan="2"><input type="submit" name="btnloginsubmit"></td>
+                <td align="center" colspan="2"><input type="submit" class="button" value="LOGIN" name="btnloginsubmit"></td>
             </tr>
         </table>
+            </div>
             
         </form>
-    </body>
-        </div>
-    </div>
+             
+     </body>
+       
     
 </html>
-<%@include file="footer.jsp" %>
+<%@include file="guest_footer.jsp" %>

@@ -3,6 +3,7 @@
     Created on : Feb 7, 2018, 10:50:50 AM
     Author     : user
 --%>
+<%@include file="guest_header.jsp" %>
 <%@page import="java.sql.ResultSet"%>
 <jsp:useBean class="DB.ConnectionClass" id="obj"></jsp:useBean>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -53,35 +54,39 @@
             <table align="center">
                 <tr>
                     <td> Name</td>
-                    <td><input type="text" name="txtname"></td>
+                    <td><input type="text" name="txtname" required=""></td>
                 </tr>
                 <tr>
                     <td> Address</td>
-                    <td><input type="text" name="txtadd"></td>
+                    <td><input type="text" name="txtadd" required=""></td>
                 </tr>
                 <tr>
                     <td>Contact </td>
-                    <td><input type="text" name="txtcontact"></td>
+                    <td><input type="text" name="txtcontact" required=""></td>
                 </tr>
                 <tr>
                     <td>Email </td>
-                    <td><input type="text" name="txtemail"></td>
+                    <td><input type="text" name="txtemail" required=""></td>
                 </tr>
                 <tr>
                     <td>User Name </td>
-                    <td><input type="text" name="txtuname"></td>
+                    <td><input type="text" name="txtuname" required=""></td>
                 </tr>
                 <tr>
                     <td>Password </td>
-                    <td><input type="text" name="txtpassword"></td>
+                    <td><input type="text" name="txtpassword" required=""></td>
                 </tr>
 
 
                 <tr>
-                    <td align="center" colspan="2"><input type="submit" name="btnsubmit"></td>
+                    <td align="center" colspan="2">
+                        <input type="submit" class="button" value="Register" name="btnsubmit">
+                        <input type="reset" class="button" value="Reset" name="btnsubmit">
+                    </td>
                 </tr>
             </table>
 
         </form>
     </body>
 </html>
+<%@include file="guest_footer.jsp" %>

@@ -19,7 +19,7 @@
         {
            if(!request.getParameter("hid").equals(""))
            {
-            String Cname=request.getParameter("selClient");
+           
             String Wname=request.getParameter("txtWorkName");
             String Description=request.getParameter("txtDescription");
             String PostDate=request.getParameter("txtPostDate");
@@ -30,7 +30,7 @@
             
             
             
-            String upQuery="update tbl_clientwork set work_name='"+Wname+"',work_description='"+Description+"',client_id='"+ClientID+"',work_postdate='"+PostDate+"',work_budget='"+Budget+"',work_estimatedend='"+EstimatedEnd+"' where client_id='"+request.getParameter("hid")+"'";
+            String upQuery="update tbl_clientwork set work_name='"+Wname+"',work_description='"+Description+"',client_id='"+session.getAttribute("user_id")+"',work_postdate='"+PostDate+"',work_budget='"+Budget+"',work_estimatedend='"+EstimatedEnd+"' where client_id='"+request.getParameter("hid")+"'";
             boolean b=obj.executeCommand(upQuery);
             if(b == true)
             {
@@ -44,7 +44,7 @@
            }
            else
            {
-            String cName=request.getParameter("selClient");
+            
             String workName=request.getParameter("txtWorkName");
             String workDescription=request.getParameter("txtDescription");
             String workPostDate=request.getParameter("txtPostDate");
@@ -54,7 +54,7 @@
             
             
         
-            String insQuery="insert into tbl_clientwork (work_name,work_description,client_id,work_postdate,work_budget,work_estimatedend,work_status,work_filename) values ('"+workName+"','"+workDescription+"','"+clientID+"','"+workPostDate+"','"+workBudget+"','"+workEstimatedEnd+"','0','file1')";
+            String insQuery="insert into tbl_clientwork (work_name,work_description,client_id,work_postdate,work_budget,work_estimatedend,work_status,work_filename) values ('"+workName+"','"+workDescription+"','"+session.getAttribute("user_id")+"','"+workPostDate+"','"+workBudget+"','"+workEstimatedEnd+"','0','file1')";
             boolean b=obj.executeCommand(insQuery);
             if(b == true)
             {
@@ -91,6 +91,11 @@
            }
            
        }
+       if(request.getParameter("rateid")!=null)
+       {
+           session.setAttribute("work", request.getParameter("rateid"));
+           response.sendRedirect("Rating.jsp");
+       }
     
     
     
@@ -101,31 +106,7 @@
             <h2 align="center">Client's Work Details</h2>
             <input type="hidden" name="hid" value="<%=clientName%>">
             <table align="center">
-                <tr>
-                    <td>Client Name</td>
-                     <td>
-                    
-          <select name="selClient">
-                            
-              <option value="sel">--Select--</option>
-                            
-                <%
-                     String selq="select * from tbl_client where client_status='1' ";
-                     ResultSet rs1=obj.selectCommand(selq);
-                     while(rs1.next())
-                     {
-                 %>
-                 <option value="<%=rs1.getString("client_id")%>" <% if(clientName.equals(rs1.getString("client_id"))){%> selected="true" <%} %>>
-                    
-                    
-                    <%=rs1.getString("client_name")%></option> 
-                <% 
-                     }  
-                 %>
-                           
-             </select>
-                </td><!-- SESSION -->
-                </tr>
+               
                 <tr>
                     <td>Name of the work</td>
                     <td><input type="text" name="txtWorkName" value="<%=wname%>"></td>
@@ -158,7 +139,7 @@
             <table border="1" align="center">
                 
                 <th>Sl.No</th>
-                <th>Client</th>
+                
                 <th>Name of the work</th>
                 <th>Description</th>
                 <th>Post Date</th>
@@ -167,7 +148,7 @@
                 
                 <% 
                  int i=1;
-                 String sel="select * from tbl_clientwork cw,tbl_client c where cw.client_id=c.client_id";
+                 String sel="select * from tbl_clientwork cw,tbl_client c where cw.client_id=c.client_id and cw.client_id="+session.getAttribute("user_id");
                  ResultSet rs=obj.selectCommand(sel);
                  while(rs.next())
                  {
@@ -177,7 +158,7 @@
                 
                     <tr>
                         <td><%=i%> </td>
-                        <td><%=rs.getString("client_name")%></td>
+                       
                         <td><%=rs.getString("work_name")%></td>
                         <td><%=rs.getString("work_description")%></td>
                         <td><%=rs.getString("work_postdate")%></td>
@@ -187,6 +168,7 @@
                         
                         <td><a href="ClientWork.jsp?delid=<%=rs.getString("work_id")%>">Delete</a></td>
                         <td><a href="ClientWork.jsp?edid=<%=rs.getString("work_id")%>">Edit</a></td>
+                        <td><a href="ClientWork.jsp?rateid=<%=rs.getString("work_id")%>">Rate</a></td>
                     </tr>
                     <%
                     i++;
